@@ -84,7 +84,8 @@ void sync_directories(const char *src_dir , const char *dst_dir)
         snprintf(src_path, PATH_MAX_LEN, "%s/%s", src_dir, entry->d_name);
         snprintf(dst_path, PATH_MAX_LEN, "%s/%s", dst_dir, entry->d_name);
         
-                struct stat st;
+        struct stat st;
+        
         if (stat(src_path, &st) == -1) {
             perror("stat");
             continue;
