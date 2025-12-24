@@ -33,13 +33,6 @@ int main(int argc , char* argv[])
     write(src_fd, "This is a sample file created programmatically.\n", 50);
     close(src_fd);
 
-    src_fd = open(src_file,O_RDONLY);
-    if(src_fd < 0)
-    {
-        perror("error opening source file");
-        return EXIT_FAILURE;
-    }
-
     dest_fd = open(dest_file , O_WRONLY|O_CREAT, 0644);
     if(dest_fd <0)
     {
@@ -50,7 +43,6 @@ int main(int argc , char* argv[])
 
      while((bytes_read = read(src_fd , buffer , BUFFER_SIZE))>0)
      {
-       printf("source data");
        bytes_written = write(dest_fd, buffer, bytes_read);
         if (bytes_written != bytes_read)
         {
@@ -86,3 +78,17 @@ int main(int argc , char* argv[])
 
 
 }
+
+
+
+// int main()
+// {
+//     int fd;
+//     fd =open("hello.txt",O_CREAT,0644);
+//     write(fd,"this is haritha",15);
+//     if(fd<0)
+//     {
+//         printf("Error");
+//     }
+//     printf("success");
+// }
